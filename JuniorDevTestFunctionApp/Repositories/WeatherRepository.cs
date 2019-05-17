@@ -20,6 +20,7 @@ namespace JuniorDevTestFunctionApp.Repositories
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
+
     /// <summary>
     /// Class WeatherRepository.
     /// </summary>
@@ -44,10 +45,12 @@ namespace JuniorDevTestFunctionApp.Repositories
         /// <returns>Task.</returns>
         public static async Task Update(string partitionKey, JObject weatherData)
         {
+            
             DynamicTableEntity tableEntity =
                 new DynamicTableEntity(partitionKey, DateTimeOffset.UtcNow.Ticks.ToString())
                 {
                     Properties = { ["data"] = EntityProperty.GeneratePropertyForString(weatherData.ToString()) }
+
                 };
 
             TableOperation operation = TableOperation.InsertOrReplace(tableEntity);

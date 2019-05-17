@@ -15,6 +15,7 @@ namespace JuniorDevTestFunctionApp.Services
     using Configuration;
     using Microsoft.Extensions.Configuration;
     using Newtonsoft.Json.Linq;
+    using Repositories;
 
     /// <summary>
     /// Class WeatherApiService.
@@ -49,19 +50,23 @@ namespace JuniorDevTestFunctionApp.Services
             HttpRequestMessage webRequest = new HttpRequestMessage()
             {
 
-                //RequestUri = new Uri("http://api.openweathermap.org/data/2.5/weather?q=${query}&appid=5ca126d85a3da75eacf46cca04a6f2c1"),
+                //RequestUri = new Uri("http://api.openweathermap.org/data/2.5/weather?q=seattle&appid=5ca126d85a3da75eacf46cca04a6f2c1"),
                 RequestUri = new Uri($"{S1}?q={query}&appid={S2}"),
                 Method =  HttpMethod.Post
             };
 
             var response = await Client.SendAsync(webRequest);
-            Console.WriteLine(response);
-            Console.WriteLine("hello");
-            
-            response.EnsureSuccessStatusCode();
-            Console.WriteLine("hello");
+            var jsonData = JObject.Parse(response.Content.ReadAsStringAsync().Result);
+            //Console.WriteLine(jsonData.GetType());
+            //Console.WriteLine(jsonData);
 
-            return await response.Content.ReadAsAsync<JObject>();
+            response.EnsureSuccessStatusCode();
+
+            
+            await WeatherRepository.Update(query, jsonData);
+            
+            
+            return jsonData;
         }
     }
 }
