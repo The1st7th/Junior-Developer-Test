@@ -42,6 +42,7 @@ namespace JuniorDevTestFunctionApp.Services
         /// <returns>Task JObject.</returns>
         public static async Task<JObject> GetWeather(string query)
         {
+            Console.WriteLine("hello");
             HttpRequestMessage webRequest = new HttpRequestMessage()
             {
                 RequestUri = new Uri($"{Configuration.WeatherUrlBase}?q={query}&appid={Configuration.Key}"),
@@ -50,6 +51,7 @@ namespace JuniorDevTestFunctionApp.Services
 
             var response = await Client.SendAsync(webRequest);
             response.EnsureSuccessStatusCode();
+            Console.WriteLine("hello");
 
             return await response.Content.ReadAsAsync<JObject>();
         }

@@ -37,8 +37,7 @@ namespace JuniorDevTestFunctionApp
         /// <returns>Task.</returns>
         [FunctionName(nameof(RunScheduledTask))]
         public static async Task RunScheduledTask(
-            [TimerTrigger("0 */1 * * * *")] TimerInfo timer,
-            ILogger log)
+            [TimerTrigger("0 */1 * * * *")] TimerInfo timer, ILogger log)
         {
             foreach (var city in Cities)
             {
