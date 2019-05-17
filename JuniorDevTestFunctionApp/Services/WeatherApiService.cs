@@ -42,14 +42,22 @@ namespace JuniorDevTestFunctionApp.Services
         /// <returns>Task JObject.</returns>
         public static async Task<JObject> GetWeather(string query)
         {
-            Console.WriteLine("hello");
+
+            WeatherServiceConfiguration urlobject = new WeatherServiceConfiguration();
+            String S1 = urlobject.WeatherUrlBase;
+            String S2 = urlobject.Key;
             HttpRequestMessage webRequest = new HttpRequestMessage()
             {
-                RequestUri = new Uri($"{Configuration.WeatherUrlBase}?q={query}&appid={Configuration.Key}"),
+
+                //RequestUri = new Uri("http://api.openweathermap.org/data/2.5/weather?q=${query}&appid=5ca126d85a3da75eacf46cca04a6f2c1"),
+                RequestUri = new Uri($"{S1}?q={query}&appid={S2}"),
                 Method =  HttpMethod.Post
             };
 
             var response = await Client.SendAsync(webRequest);
+            Console.WriteLine(response);
+            Console.WriteLine("hello");
+            
             response.EnsureSuccessStatusCode();
             Console.WriteLine("hello");
 

@@ -24,6 +24,10 @@ namespace JuniorDevTestFunctionApp
         /// Gets or sets the weather URL base.
         /// </summary>
         /// <value>The weather URL base.</value>
+<<<<<<< HEAD
         public string WeatherUrlBase { get; set; } = "api.openweathermap.org/data/2.5/weather";
+=======
+        public string WeatherUrlBase { get; set; } = "http://api.openweathermap.org/data/2.5/weather";
+>>>>>>> 4e7b6b18b59b24eab326bfb1608456f0f0ba0df7
     }
 }

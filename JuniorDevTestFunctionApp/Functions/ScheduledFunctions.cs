@@ -15,7 +15,7 @@ namespace JuniorDevTestFunctionApp
     using Microsoft.Extensions.Logging;
     using Newtonsoft.Json.Linq;
     using Services;
-
+    using System;
     /// <summary>
     /// Class ScheduledFunctions.
     /// </summary>
@@ -42,7 +42,9 @@ namespace JuniorDevTestFunctionApp
             foreach (var city in Cities)
             {
                 JObject weather = await WeatherApiService.GetWeather(city);
+                
+                
             }
-        }
+        }   
     }
 }
