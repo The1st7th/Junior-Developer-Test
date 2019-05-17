@@ -18,12 +18,12 @@ namespace JuniorDevTestFunctionApp
         /// Gets or sets the key.
         /// </summary>
         /// <value>The key.</value>
-        public string Key { get; set; }
+        public string Key { get; set; } = "5ca126d85a3da75eacf46cca04a6f2c1";
 
         /// <summary>
         /// Gets or sets the weather URL base.
         /// </summary>
         /// <value>The weather URL base.</value>
-        public string WeatherUrlBase { get; set; }
+        public string WeatherUrlBase { get; set; } = "http://api.openweathermap.org/data/2.5/weather";
     }
 }
